@@ -1,0 +1,51 @@
+For any question, please contact: 
+Stefan Eilemann (CMake) stefan.eilemann@epfl.ch
+Fabien Delalondre (Doxygen) Fabien.Delalondre@epfl.ch  
+
+0. Requirements
+    - doxygen: http://www.stack.nl/~dimitri/doxygen/
+    - graphviz: http://www.graphviz.org/
+    - cmake
+    - ccmake
+    - boost
+
+1. Make
+    CMake(www.cmake.org) is the preferred make tool used in the Blue
+    Brain. Its config file is a plain text file called CMakeLists.txt.
+    You will find a sample one right next to this README. It is
+    commented heavily for reference.
+
+    * Basic use *
+
+    In the top directory, just type "make" and it will do everything for
+    you. However, you will need to read the next paragraph if you want
+    to customize the build (e.g. enable/disable options)
+
+    * Advanced way *
+
+    To use it run "ccmake Debug" and/or "ccmake Release" in the top
+    directory of the project. Then turn on the options that you want.
+    For example, you might want to enable building documentation for the
+    sample project.  Then press "c" followed by "g" to generate a
+    makefile.  Then type "make"
+
+2. Docs
+
+    There is a default doc target in the CMakeLists.txt, which is build
+    in as a default target or when you type "make doc" You must have doxygen
+    installed on your system for this to work. See hello.h in the
+    include directory for hints on how to write doxygen comments.
+
+    Documentation is being placed in: BUILD_DIR/doc
+
+3. Tests
+
+    There are 2 dummy tests defined in the CMakeLists.txt. The unit test
+    source is in the test directory.  To run the dummy test, do "make
+    test"
+
+4. Project Organization
+
+    Source and header files are grouped by component, namely libs and apps
+    (files to build the library, files to build the executable).
+
