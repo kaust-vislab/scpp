@@ -18,8 +18,7 @@ packages](https://bbpteam.epfl.ch/project/spaces/display/INFRA/Software+distribu
 
 Hello provides the following major features:
 
-* Feature 1
-* Feature 2
+* Rule the world
 
 - - -
 

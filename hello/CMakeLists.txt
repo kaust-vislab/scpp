@@ -12,12 +12,12 @@ set(HELLO_LINKLIBS ${Boost_LIBRARIES})
 
 add_library(${LIBRARY} SHARED ${HELLO_ALL})
 target_link_libraries(${LIBRARY} ${HELLO_LINKLIBS})
-set_target_properties(${LIBRARY} PROPERTIES VERSION ${VERSION}
-                                            SOVERSION ${VERSION_ABI})
+set_target_properties(${LIBRARY}
+  PROPERTIES VERSION ${VERSION} SOVERSION ${VERSION_ABI}
+  PUBLIC_HEADER "${HELLO_PUBLIC_HEADERS}")
 
-install(FILES ${BRION_PUBLIC_HEADERS} DESTINATION include/hello
-  COMPONENT dev)
 install(TARGETS ${LIBRARY}
+        PUBLIC_HEADER DESTINATION include/hello COMPONENT dev
         ARCHIVE DESTINATION lib COMPONENT dev
         RUNTIME DESTINATION bin COMPONENT lib
         LIBRARY DESTINATION lib COMPONENT lib)

@@ -5,8 +5,7 @@ Welcome to Hello, a C++ library to rule the world.
 ## Features
 
 Hello provides the following functionality:
-* Feature 1
-* Feature 2
+* Rule the world
 
 ## Downloads
 
@@ -18,7 +17,7 @@ Hello provides the following functionality:
   git clone https://github.com/Eyescale/Buildyard.git
   cd Buildyard
   git clone https://bbpteam.epfl.ch/reps/common/config.bbp.git
-  make Hello
+  make Template
 ```
 
 ### Version 1.0
