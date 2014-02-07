@@ -3,3 +3,4 @@ Release
 Makefile
 .travis.yml
 CMakeLists.txt.user*
+CMake/common/

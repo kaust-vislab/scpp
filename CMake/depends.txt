@@ -1,0 +1,1 @@
+config.bbp ssh://bbpgit.epfl.ch/common/config.bbp.git master

@@ -2,26 +2,43 @@
 
 include(System)
 list(APPEND FIND_PACKAGES_DEFINES ${SYSTEM})
+find_package(PkgConfig)
 
-find_package(Boost 1.41.0 REQUIRED unit_test_framework program_options)
-if(Boost_FOUND)
-  set(Boost_name Boost)
-endif()
-if(BOOST_FOUND)
-  set(Boost_name BOOST)
-endif()
-if(Boost_name)
-  list(APPEND FIND_PACKAGES_DEFINES TEMPLATE_USE_BOOST)
-  link_directories(${${Boost_name}_LIBRARY_DIRS})
-  if(NOT "SYSTEM ${${Boost_name}_INCLUDE_DIRS}" MATCHES "-NOTFOUND")
-    include_directories(SYSTEM ${${Boost_name}_INCLUDE_DIRS})
+set(ENV{PKG_CONFIG_PATH} "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig:$ENV{PKG_CONFIG_PATH}")
+if(PKG_CONFIG_EXECUTABLE)
+  find_package(Boost 1.41.0 COMPONENTS unit_test_framework program_options)
+  if((NOT Boost_FOUND) AND (NOT BOOST_FOUND))
+    pkg_check_modules(Boost Boost>=1.41.0)
   endif()
+  if((NOT Boost_FOUND) AND (NOT BOOST_FOUND))
+    message(FATAL_ERROR "Could not find Boost")
+  endif()
+else()
+  find_package(Boost 1.41.0  REQUIRED unit_test_framework program_options)
 endif()
 
 
 if(EXISTS ${CMAKE_SOURCE_DIR}/CMake/FindPackagesPost.cmake)
   include(${CMAKE_SOURCE_DIR}/CMake/FindPackagesPost.cmake)
 endif()
+
+if(BOOST_FOUND)
+  set(Boost_name BOOST)
+  set(Boost_FOUND TRUE)
+elseif(Boost_FOUND)
+  set(Boost_name Boost)
+  set(BOOST_FOUND TRUE)
+endif()
+if(Boost_name)
+  list(APPEND FIND_PACKAGES_DEFINES TEMPLATE_USE_BOOST)
+  set(FIND_PACKAGES_FOUND "${FIND_PACKAGES_FOUND} Boost")
+  link_directories(${${Boost_name}_LIBRARY_DIRS})
+  if(NOT "${${Boost_name}_INCLUDE_DIRS}" MATCHES "-NOTFOUND")
+    include_directories(SYSTEM ${${Boost_name}_INCLUDE_DIRS})
+  endif()
+endif()
+
+set(TEMPLATE_BUILD_DEBS autoconf;automake;cmake;cppcheck;doxygen;git;git-review;git-svn;lcov;ninja-build;pkg-config;subversion)
 
 set(TEMPLATE_DEPENDS Boost)
 
@@ -40,10 +57,10 @@ file(WRITE ${DEFINES_FILE_IN}
   "#define ${CMAKE_PROJECT_NAME}_DEFINES_${SYSTEM}_H\n\n")
 file(WRITE ${OPTIONS_CMAKE} "# Optional modules enabled during build\n")
 foreach(DEF ${FIND_PACKAGES_DEFINES})
-  add_definitions(-D${DEF})
+  add_definitions(-D${DEF}=1)
   file(APPEND ${DEFINES_FILE_IN}
   "#ifndef ${DEF}\n"
-  "#  define ${DEF}\n"
+  "#  define ${DEF} 1\n"
   "#endif\n")
 if(NOT DEF STREQUAL SYSTEM)
   file(APPEND ${OPTIONS_CMAKE} "set(${DEF} ON)\n")
@@ -54,3 +71,17 @@ file(APPEND ${DEFINES_FILE_IN}
 
 include(UpdateFile)
 update_file(${DEFINES_FILE_IN} ${DEFINES_FILE})
+if(Boost_FOUND) # another WAR for broken boost stuff...
+  set(Boost_VERSION ${Boost_MAJOR_VERSION}.${Boost_MINOR_VERSION}.${Boost_SUBMINOR_VERSION})
+endif()
+if(CUDA_FOUND)
+  string(REPLACE "-std=c++11" "" CUDA_HOST_FLAGS "${CUDA_HOST_FLAGS}")
+  string(REPLACE "-std=c++0x" "" CUDA_HOST_FLAGS "${CUDA_HOST_FLAGS}")
+endif()
+if(FIND_PACKAGES_FOUND)
+  if(MSVC)
+    message(STATUS "Configured with ${FIND_PACKAGES_FOUND}")
+  else()
+    message(STATUS "Configured with ${CMAKE_BUILD_TYPE}${FIND_PACKAGES_FOUND}")
+  endif()
+endif()
