@@ -1,23 +1,12 @@
-# @author  Stefan Eilemann
-# @remarks Copyright (c) BBP/EPFL 2011; All rights reserved. Do not distribute without further notice.
-
-include(configure.cmake)
-include(files.cmake)
+# Copyright (c) BBP/EPFL 2011-2014
+#                        Stefan.Eilemann@epfl.ch
+# All rights reserved. Do not distribute without further notice.
 
 source_group(\\ FILES CMakeLists.txt)
-source_group(hello FILES ${HELLO_ALL})
 
-set(LIBRARY Hello)
-set(HELLO_LINKLIBS ${Boost_LIBRARIES})
+set(HELLO_PUBLIC_HEADERS ${COMMON_INCLUDES} world.h)
+set(HELLO_HEADERS)
+set(HELLO_SOURCES ${COMMON_SOURCES} world.cpp)
+set(HELLO_LINK_LIBRARIES ${Boost_PROGRAM_OPTIONS_LIBRARY})
 
-add_library(${LIBRARY} SHARED ${HELLO_ALL})
-target_link_libraries(${LIBRARY} ${HELLO_LINKLIBS})
-set_target_properties(${LIBRARY}
-  PROPERTIES VERSION ${VERSION} SOVERSION ${VERSION_ABI}
-  PUBLIC_HEADER "${HELLO_PUBLIC_HEADERS}")
-
-install(TARGETS ${LIBRARY}
-        PUBLIC_HEADER DESTINATION include/hello COMPONENT dev
-        ARCHIVE DESTINATION lib COMPONENT dev
-        RUNTIME DESTINATION bin COMPONENT lib
-        LIBRARY DESTINATION lib COMPONENT lib)
+common_library(Hello)

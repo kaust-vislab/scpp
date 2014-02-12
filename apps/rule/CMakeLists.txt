@@ -2,4 +2,8 @@
 #                        Stefan.Eilemann@epfl.ch
 # All rights reserved. Do not distribute without further notice.
 
-add_subdirectory(rule)
+set(RULE_HEADERS)
+set(RULE_SOURCES main.cpp)
+set(RULE_LINK_LIBRARIES Hello ${Boost_PROGRAM_OPTIONS_LIBRARY})
+
+common_application(rule)

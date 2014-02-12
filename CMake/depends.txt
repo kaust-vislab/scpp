@@ -1,1 +1,1 @@
-config.bbp ssh://bbpgit.epfl.ch/common/config.bbp.git master
+config.bbp ssh://git@bbpgit.epfl.ch/common/config.bbp.git master
