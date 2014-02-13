@@ -8,7 +8,7 @@ auxilary documentation.
 
 ## Directory Layout
 
-* [CMakeLists](https://github.com/BlueBrain/Template/blob/master/CMakeLists.txt):
+* [CMakeLists](https://github.com/BlueBrain/Hello/blob/master/CMakeLists.txt):
   top-level CMake file, delegates most of its work to the CMake subdirectory.
 * [CMake](https://github.com/Eyescale/CMake#readme): subdirectory
   included using git externals. See below for details.
@@ -23,7 +23,7 @@ The top-level CMakeLists is relatively simple due to the delegation of
 details into the CMake external. It starts with the project setup which
 defines the project name and includes the CMake/common git external
 defined in
-[.gitexternals](https://github.com/BlueBrain/Template/blob/master/.gitexternals)
+[.gitexternals](https://github.com/BlueBrain/Hello/blob/master/.gitexternals)
 
 @snippet CMakeLists.txt Setup
 

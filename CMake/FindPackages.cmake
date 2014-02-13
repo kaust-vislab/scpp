@@ -30,7 +30,7 @@ elseif(Boost_FOUND)
   set(BOOST_FOUND TRUE)
 endif()
 if(Boost_name)
-  list(APPEND FIND_PACKAGES_DEFINES TEMPLATE_USE_BOOST)
+  list(APPEND FIND_PACKAGES_DEFINES HELLO_USE_BOOST)
   set(FIND_PACKAGES_FOUND "${FIND_PACKAGES_FOUND} Boost")
   link_directories(${${Boost_name}_LIBRARY_DIRS})
   if(NOT "${${Boost_name}_INCLUDE_DIRS}" MATCHES "-NOTFOUND")
@@ -38,9 +38,9 @@ if(Boost_name)
   endif()
 endif()
 
-set(TEMPLATE_BUILD_DEBS autoconf;automake;cmake;cppcheck;doxygen;git;git-review;git-svn;lcov;ninja-build;pkg-config;subversion)
+set(HELLO_BUILD_DEBS autoconf;automake;cmake;cppcheck;doxygen;git;git-review;git-svn;lcov;ninja-build;pkg-config;subversion)
 
-set(TEMPLATE_DEPENDS Boost)
+set(HELLO_DEPENDS Boost)
 
 # Write defines.h and options.cmake
 if(NOT PROJECT_INCLUDE_NAME)

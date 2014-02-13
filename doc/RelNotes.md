@@ -10,9 +10,7 @@ its spare time it serves as a template for new C++ projects, as detailed
 in the @ref documentation.
 
 Hello 1.0 is the first complete release. It can be retrieved by cloning
-the [source code](https://bbpteam.epfl.ch/reps/common/Template.git) or
-one of the
-[precompiled packages](https://bbpteam.epfl.ch/project/spaces/display/INFRA/Software+distribution).
+the [source code](https://github.com/BlueBrain/Hello).
 
 ## Features {#Features}
 
@@ -53,8 +51,8 @@ following:
 ## Known Bugs {#Bugs}
 
 The following bugs were known at release time. Please file a
-[Bug Report](https://bbpteam.epfl.ch/project/issues/browse/CMake) if you find
-any other issue with this release.
+[Bug Report](https://github.com/BlueBrain/Hello/issues) if you find any
+other issue with this release.
 
 * No known bugs
 
@@ -70,11 +68,8 @@ and build environments are tested:
 * Linux: Ubuntu 12.10, 13.04, 13.10 RHEL 6 (Makefile, i386, x64)
 * Mac OS X: 10.8 (Makefile, XCode, i386, x64)
 
-The [API documentation]
-(https://bbpteam.epfl.ch/reps/common/Documentation.git/plain/Hello-1.0/index.html)
-can be found on
-[bbpteam.epfl.ch]
-(https://bbpteam.epfl.ch/reps/common/Documentation.git/plain/index.html).
+The [API documentation](https://bluebrain.github.io/Hello-1.0/index.html)
+can be found on [bluebrain.github.io] (http://bluebrain.github.io/)
 
 - - -
 
