@@ -44,7 +44,7 @@ set(TEMPLATE_DEPENDS Boost)
 
 # Write defines.h and options.cmake
 if(NOT PROJECT_INCLUDE_NAME)
-  message(FATAL_ERROR "PROJECT_INCLUDE_NAME not set, missing Common.cmake?")
+  message(FATAL_ERROR "PROJECT_INCLUDE_NAME not set, old or missing Common.cmake?")
 endif()
 if(NOT OPTIONS_CMAKE)
   set(OPTIONS_CMAKE ${CMAKE_BINARY_DIR}/options.cmake)

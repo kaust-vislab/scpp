@@ -8,10 +8,10 @@ auxilary documentation.
 
 ## Directory Layout
 
-* [CMakeLists](https://bbpteam.epfl.ch/reps/common/Template.git/plain/CMakeLists.txt):
+* [CMakeLists](https://github.com/BlueBrain/Template/blob/master/CMakeLists.txt):
   top-level CMake file, delegates most of its work to the CMake subdirectory.
-* [CMake](https://bbpteam.epfl.ch/reps/common/CMake.git/plain/README.md):
-  subdirectory included using git externals. See below for details.
+* [CMake](https://github.com/Eyescale/CMake#readme): subdirectory
+  included using git externals. See below for details.
 * hello: Core library of the project.
 * apps: Applications delivered with the project.
 * tests: Unit tests
@@ -23,7 +23,7 @@ The top-level CMakeLists is relatively simple due to the delegation of
 details into the CMake external. It starts with the project setup which
 defines the project name and includes the CMake/common git external
 defined in
-[.gitexternals](https://bbpteam.epfl.ch/reps/common/Template.git/plain/.gitexternals):
+[.gitexternals](https://github.com/BlueBrain/Template/blob/master/.gitexternals)
 
 @snippet CMakeLists.txt Setup
 
@@ -85,14 +85,10 @@ targets) and CPack can do its magic:
 ## CMake
 
 All BBP projects rely on a common
-[CMake repository](https://bbpteam.epfl.ch/reps/common/CMake.git/) which
-provides sensible defaults for compilation, documentation and
-packaging. It is integrated as a CMake/common subtree as described in
-the
-[Readme](https://bbpteam.epfl.ch/reps/common/CMake.git/plain/README.md). In
-turn, it includes the
-[generic CMake repository](https://github.com/Eyescale/CMake#readme)
-used for our open source projects in CMake/common/oss.
+[CMake repository](https://github.com/Eyescale/CMake) which provides
+sensible defaults for compilation, documentation and packaging. It is
+integrated as a CMake/common subtree as described in the
+[Readme](https://github.com/Eyescale/CMake#readme).
 
 ## Hello Library
 

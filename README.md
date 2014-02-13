@@ -6,17 +6,14 @@ Welcome to Hello, a C++ library to rule the world.
 
 Hello provides the following functionality:
 * Rule the world
+* Provide a C++/CMake template for the Blue Brain Project
 
-## Downloads
-
-* [Packages Repository](https://bbpteam.epfl.ch/project/spaces/display/INFRA/Software+distribution)
-* [API Documentation](https://bbpteam.epfl.ch/reps/common/Documentation.git/plain/index.html)
-* Building from source:
+## Building from Source
 
 ```
   git clone https://github.com/Eyescale/Buildyard.git
   cd Buildyard
-  git clone https://bbpteam.epfl.ch/reps/common/config.bbp.git
+  git clone https://github.com/BlueBrain/config.git config.bluebrain
   make Template
 ```
 
