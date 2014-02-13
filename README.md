@@ -11,6 +11,16 @@ Hello provides the following functionality:
 ## Building from Source
 
 ```
+  git clone https://github.com/BlueBrain/Hello.git
+  mkdir Hello/build
+  cd Hello/build
+  cmake ..
+  make
+```
+
+Or using Buildyard:
+
+```
   git clone https://github.com/Eyescale/Buildyard.git
   cd Buildyard
   git clone https://github.com/BlueBrain/config.git config.bluebrain
