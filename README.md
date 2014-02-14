@@ -7,6 +7,7 @@ Welcome to Hello, a C++ library to rule the world.
 Hello provides the following functionality:
 * Rule the world
 * Provide a C++/CMake template for the Blue Brain Project
+* [Documentation](http://bluebrain.github.io/Hello-1.0/index.html)
 
 ## Building from Source
 
