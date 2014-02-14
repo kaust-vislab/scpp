@@ -27,6 +27,8 @@ before_install:
  - sudo apt-get install -qq git-review || /bin/true
  - sudo apt-get install -qq git-svn || /bin/true
  - sudo apt-get install -qq lcov || /bin/true
+ - sudo apt-get install -qq libboost-program-options-dev || /bin/true
+ - sudo apt-get install -qq libboost-test-dev || /bin/true
  - sudo apt-get install -qq ninja-build || /bin/true
  - sudo apt-get install -qq pkg-config || /bin/true
  - sudo apt-get install -qq subversion || /bin/true

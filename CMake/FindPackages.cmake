@@ -38,7 +38,7 @@ if(Boost_name)
   endif()
 endif()
 
-set(HELLO_BUILD_DEBS autoconf;automake;cmake;cppcheck;doxygen;git;git-review;git-svn;lcov;ninja-build;pkg-config;subversion)
+set(HELLO_BUILD_DEBS autoconf;automake;cmake;cppcheck;doxygen;git;git-review;git-svn;lcov;libboost-program-options-dev;libboost-test-dev;ninja-build;pkg-config;subversion)
 
 set(HELLO_DEPENDS Boost)
 
