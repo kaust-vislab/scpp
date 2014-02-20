@@ -44,7 +44,8 @@ set(HELLO_DEPENDS Boost)
 
 # Write defines.h and options.cmake
 if(NOT PROJECT_INCLUDE_NAME)
-  message(FATAL_ERROR "PROJECT_INCLUDE_NAME not set, old or missing Common.cmake?")
+  message(WARNING "PROJECT_INCLUDE_NAME not set, old or missing Common.cmake?")
+  set(PROJECT_INCLUDE_NAME ${CMAKE_PROJECT_NAME})
 endif()
 if(NOT OPTIONS_CMAKE)
   set(OPTIONS_CMAKE ${CMAKE_BINARY_DIR}/options.cmake)
@@ -67,8 +68,12 @@ if(NOT DEF STREQUAL SYSTEM)
   file(APPEND ${OPTIONS_CMAKE} "set(${DEF} ON)\n")
 endif()
 endforeach()
-install(FILES ${OPTIONS_CMAKE} DESTINATION ${CMAKE_MODULE_INSTALL_PATH}
-  COMPONENT dev)
+if(CMAKE_MODULE_INSTALL_PATH)
+  install(FILES ${OPTIONS_CMAKE} DESTINATION ${CMAKE_MODULE_INSTALL_PATH}
+    COMPONENT dev)
+else()
+  message(WARNING "CMAKE_MODULE_INSTALL_PATH not set, old or missing Common.cmake?")
+endif()
 file(APPEND ${DEFINES_FILE_IN}
   "\n#endif\n")
 

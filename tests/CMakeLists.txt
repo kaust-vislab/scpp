@@ -13,4 +13,4 @@ set(TEST_LIBRARIES ${Boost_UNIT_TEST_FRAMEWORK_LIBRARY} Hello)
 include(CommonCTest)
 
 # Installs the compiled tests ${TEST_FILES} into the examples directory
-install_files(share/Lunchbox/tests FILES ${TEST_FILES} COMPONENT examples)
+install_files(share/Hello/tests FILES ${TEST_FILES} COMPONENT examples)
