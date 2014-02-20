@@ -7,4 +7,4 @@ include_directories(${CMAKE_SOURCE_DIR}) # some tests need private headers
 set(TEST_LIBRARIES ${Boost_UNIT_TEST_FRAMEWORK_LIBRARY} Hello)
 include(CommonCTest)
 
-install_files(share/Lunchbox/tests FILES ${TEST_FILES} COMPONENT examples)
+install_files(share/Hello/tests FILES ${TEST_FILES} COMPONENT examples)
