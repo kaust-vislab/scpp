@@ -38,7 +38,7 @@ if(Boost_name)
   endif()
 endif()
 
-set(HELLO_BUILD_DEBS autoconf;automake;cmake;cppcheck;doxygen;git;git-review;git-svn;lcov;libboost-program-options-dev;libboost-test-dev;ninja-build;pkg-config;subversion)
+set(HELLO_BUILD_DEBS autoconf;automake;cmake;doxygen;git;git-review;libboost-program-options-dev;libboost-test-dev;pkg-config;subversion)
 
 set(HELLO_DEPENDS Boost)
 
@@ -78,7 +78,7 @@ file(APPEND ${DEFINES_FILE_IN}
   "\n#endif\n")
 
 include(UpdateFile)
-update_file(${DEFINES_FILE_IN} ${DEFINES_FILE})
+configure_file(${DEFINES_FILE_IN} ${DEFINES_FILE} COPYONLY)
 if(Boost_FOUND) # another WAR for broken boost stuff...
   set(Boost_VERSION ${Boost_MAJOR_VERSION}.${Boost_MINOR_VERSION}.${Boost_SUBMINOR_VERSION})
 endif()
