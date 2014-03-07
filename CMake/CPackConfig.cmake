@@ -6,7 +6,6 @@
 # Info: http://www.itk.org/Wiki/CMake:Component_Install_With_CPack
 
 set(CPACK_PACKAGE_CONTACT "John Doe <john.doe@epfl.ch>")
-set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "Example project for the Blue Brain Project")
 set(CPACK_PACKAGE_DESCRIPTION_FILE "${CMAKE_SOURCE_DIR}/README.md")
 set(CPACK_PACKAGE_LICENSE "Proprietary")
 
