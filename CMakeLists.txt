@@ -13,11 +13,11 @@ include(GitExternal)
 # //! [Setup]
 
 # //! [Versioning]
-set(RELEASE_VERSION 1) # OFF or ABI version
 set(LAST_RELEASE 1.0.0)
 set(VERSION_MAJOR "1")
 set(VERSION_MINOR "0")
 set(VERSION_PATCH "0")
+set(VERSION_ABI 1)
 # //! [Versioning]
 
 # //! [Scripts]
