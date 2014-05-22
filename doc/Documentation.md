@@ -47,12 +47,12 @@ as major and is allowed to break the API between minor versions (since
 it does not have an official 1.0 API). A patch release fixes only bugs
 without breaking the ABI. It never introduces new functionality.
 
-The ABI version (RELEASE_VERSION) is the binary interface, that is, the
-shared library interface. It has to be increased every time the library
-changes, e.g., by introducing new functions or changing the memory
-layout of a class. A patch release must be ABI compatible. A minor
-release may be ABI compatible -- Test it by replacing the .so for an
-existing application!  A major release necessarily breaks the ABI.
+The ABI version is the binary interface, that is, the shared library
+interface. It has to be increased every time the library changes, e.g.,
+by introducing new functions or changing the memory layout of a class. A
+patch release must be ABI compatible. A minor release may be ABI
+compatible -- Test it by replacing the .so for an existing application!
+A major release necessarily breaks the ABI.
 
 LAST_RELEASE is used by a few Common targets, e.g., tarball.
 
