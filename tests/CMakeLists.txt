@@ -4,8 +4,6 @@
 # Includes the install_files function below
 include(InstallFiles)
 
-include_directories(${CMAKE_SOURCE_DIR}) # some tests need private headers
-
 # TEST_LIBRARIES variable is used by the CommonCTest.cmake script to link against the given libraries
 set(TEST_LIBRARIES ${Boost_UNIT_TEST_FRAMEWORK_LIBRARY} Hello)
 
