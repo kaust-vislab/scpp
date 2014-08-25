@@ -13,8 +13,7 @@ namespace hello
 {
 void World::greet()
 {
-    std::cout << "Hello world version " << Version::getRevString()
-              << std::endl;
+    std::cout << "Hello world version " << Version::getRevString() << std::endl;
 }
 
 int World::getN( const int n )
@@ -23,5 +22,4 @@ int World::getN( const int n )
     /// \bug Only works for integers
     return n;
 }
-
 }
