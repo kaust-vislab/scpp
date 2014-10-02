@@ -6,6 +6,8 @@
 #ifndef HELLO_WORLD_H
 #define HELLO_WORLD_H
 
+#include <hello/api.h>
+
 /**
  * The namespace to rule the world.
  *
@@ -22,10 +24,10 @@ class World
 {
 public:
     /** Greet the caller. @version 1.0 */
-    void greet();
+    HELLO_API void greet();
 
     /** @return the input value. */
-    static int getN( const int n );
+    HELLO_API static int getN(const int n);
 };
 
 } // namespace hello

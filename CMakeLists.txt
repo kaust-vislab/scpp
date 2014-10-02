@@ -13,7 +13,6 @@ include(GitExternal)
 # //! [Setup]
 
 # //! [Versioning]
-set(LAST_RELEASE 1.0.0)
 set(VERSION_MAJOR "1")
 set(VERSION_MINOR "0")
 set(VERSION_PATCH "0")
