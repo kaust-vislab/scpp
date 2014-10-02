@@ -30,6 +30,6 @@ public:
     HELLO_API static int getN(const int n);
 };
 
-} /// namespace hello
+} // namespace hello
 
 #endif // HELLO_WORLD_H

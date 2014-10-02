@@ -29,7 +29,6 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-
 #include <hello/world.h>
 #include <hello/version.h>
 #include <boost/program_options.hpp>
