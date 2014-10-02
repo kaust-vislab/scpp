@@ -54,8 +54,6 @@ patch release must be ABI compatible. A minor release may be ABI
 compatible -- Test it by replacing the .so for an existing application!
 A major release necessarily breaks the ABI.
 
-LAST_RELEASE is used by a few Common targets, e.g., tarball.
-
 - - -
 
 Then the now-famous Common cmake script and not-so-famous FindPackages
