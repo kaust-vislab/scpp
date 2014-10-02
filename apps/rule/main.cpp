@@ -41,26 +41,28 @@ int main( int argc, char *argv[] )
     // Arguments parsing
     po::variables_map vm;
     po::options_description desc( "Supported options" );
-    desc.add_options()( "help,h", "show help message." )(
-        "version,v", "Show program name/version banner and exit." )(
-        "rev", "Print the git revision number" );
+    desc.add_options()
+        ( "help,h", "show help message." )
+        ( "version,v", "Show program name/version banner and exit." )
+        ( "rev", "Print the git revision number" );
     po::store( parse_command_line( argc, argv, desc ), vm );
     po::notify( vm );
 
-    if( vm.count( "help" ) )
+    if( vm.count( "help" ))
     {
         std::cout << desc << std::endl;
         return EXIT_SUCCESS;
     }
 
-    if( vm.count( "version" ) )
+    if( vm.count( "version" ))
     {
         std::cout << "HelloRunner version " << hello::Version::getString()
-                  << std::endl << "Copyright (c) BBP/EPFL 2014." << std::endl;
+                  << std::endl
+                  << "Copyright (c) BBP/EPFL 2014." << std::endl;
         return EXIT_SUCCESS;
     }
 
-    if( vm.count( "rev" ) )
+    if( vm.count( "rev" ))
     {
         std::cout << "git revision: " << std::hex
                   << hello::Version::getRevision() << std::endl;
