@@ -5,6 +5,6 @@
 add_definitions(-DBOOST_PROGRAM_OPTIONS_DYN_LINK) # Fix for windows and shared boost.
 set(RULE_HEADERS)
 set(RULE_SOURCES main.cpp)
-set(RULE_LINK_LIBRARIES Hello ${Boost_PROGRAM_OPTIONS_LIBRARY})
+set(RULE_LINK_LIBRARIES Hello ${Boost_PROGRAM_OPTIONS_LIBRARY} ${SuperCollider_LIBRARIES})
 
 common_application(rule)

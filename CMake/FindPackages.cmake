@@ -17,6 +17,7 @@ else()
   find_package(Boost 1.41.0  REQUIRED unit_test_framework program_options)
 endif()
 
+find_package(SuperCollider)
 
 if(EXISTS ${CMAKE_SOURCE_DIR}/CMake/FindPackagesPost.cmake)
   include(${CMAKE_SOURCE_DIR}/CMake/FindPackagesPost.cmake)
@@ -36,6 +37,11 @@ if(Boost_name)
   if(NOT "${${Boost_name}_INCLUDE_DIRS}" MATCHES "-NOTFOUND")
     include_directories(SYSTEM ${${Boost_name}_INCLUDE_DIRS})
   endif()
+endif()
+
+if(SuperCollider_FOUND)
+  set(FIND_PACKAGES_FOUND "${FIND_PACKAGES_FOUND} SuperCollider")
+  include_directories(SYSTEM ${SuperCollider_INCLUDE_DIRS})
 endif()
 
 set(HELLO_BUILD_DEBS autoconf;automake;cmake;doxygen;git;git-review;libboost-program-options-dev;libboost-test-dev;pkg-config;subversion)
@@ -109,6 +115,7 @@ if(QT4_FOUND)
     include(${QT_USE_FILE})
   endif()
 endif()
+
 if(FIND_PACKAGES_FOUND)
   if(MSVC)
     message(STATUS "Configured with ${FIND_PACKAGES_FOUND}")
