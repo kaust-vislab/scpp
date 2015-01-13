@@ -1,4 +1,3 @@
-
 /* Copyright (c) 2014, BBP/EPFL
  *                     Stefan.Eilemann@epfl.ch
  *
@@ -34,7 +33,49 @@
 #include <boost/program_options.hpp>
 #include <iostream>
 
+#include "SC_LanguageClient.h"
+#include "SC_StringBuffer.h"
+
 namespace po = boost::program_options;
+
+
+// =====================================================================
+// SC_CPPClient - cpp sclang client.
+// =====================================================================
+static FILE* gPostDest = stdout;
+class SC_CPPClient : public SC_LanguageClient
+{
+ public:
+    SC_CPPClient(const char* name):SC_LanguageClient(name){}
+
+    virtual void postText(const char* str, size_t len);
+    virtual void postFlush(const char* str, size_t len);
+    virtual void postError(const char* str, size_t len);
+    virtual void flush();
+};
+
+void SC_CPPClient::postText(const char* str, size_t len)
+{
+    fwrite(str, sizeof(char), len, gPostDest);
+}
+
+void SC_CPPClient::postFlush(const char* str, size_t len)
+{
+    fwrite(str, sizeof(char), len, gPostDest);
+    fflush(gPostDest);
+}
+
+void SC_CPPClient::postError(const char* str, size_t len)
+{
+    fprintf(gPostDest, "ERROR: ");
+    fwrite(str, sizeof(char), len, gPostDest);
+}
+
+void SC_CPPClient::flush()
+{
+    fflush(gPostDest);
+}
+
 
 int main( int argc, char *argv[] )
 {
@@ -70,6 +111,7 @@ int main( int argc, char *argv[] )
     }
 
     // Actual "work"
+    SC_CPPClient app("sclang");
     hello::World hello;
     hello.greet();
 
