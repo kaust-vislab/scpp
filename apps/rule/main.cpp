@@ -52,6 +52,7 @@ class SC_CPPClient : public SC_LanguageClient
     virtual void postFlush(const char* str, size_t len);
     virtual void postError(const char* str, size_t len);
     virtual void flush();
+    void run();
 };
 
 void SC_CPPClient::postText(const char* str, size_t len)
@@ -74,6 +75,43 @@ void SC_CPPClient::postError(const char* str, size_t len)
 void SC_CPPClient::flush()
 {
     fflush(gPostDest);
+}
+
+void SC_CPPClient::run(){
+    // initialize runtime
+    initRuntime();
+
+    // startup library
+    compileLibrary();
+
+    // we first connect to the synth server
+    setCmdLine("s = Server(\"aServer\", NetAddr(\"109.171.139.2\", 57110));");
+    runLibrary(s_interpretCmdLine);
+
+    //MADHU: The synth is setup and defined on the server
+    //setCmdLine("SynthDef(\"sine\", { Out.ar(0, SinOsc.ar(440, 0, 0.2)) }).send(s);");
+    //runLibrary(s_interpretCmdLine);
+
+
+    setCmdLine("s.sendMsg(\"s_new\", \"sine\", n = s.nextNodeID, 0, 1);");
+    runLibrary(s_interpretCmdLine);
+
+    /* setCmdLine("s.sendMsg(\"s_new\", \"sine\", n = s.nextNodeID, 0, 1);");
+    runLibrary(s_interpretCmdLine);
+    setCmdLine("s.sendMsg(\"s_new\", \"sine\", n = s.nextNodeID, 0, 1);");
+    runLibrary(s_interpretCmdLine);
+    setCmdLine("s.sendMsg(\"s_new\", \"sine\", n = s.nextNodeID, 0, 1);");
+    runLibrary(s_interpretCmdLine);
+    setCmdLine("s.sendMsg(\"s_new\", \"sine\", n = s.nextNodeID, 0, 1);");
+    runLibrary(s_interpretCmdLine);*/
+
+    flush();
+
+
+    // shutdown library
+    shutdownLibrary();
+    flush ();
+    shutdownRuntime ();
 }
 
 
@@ -111,7 +149,11 @@ int main( int argc, char *argv[] )
     }
 
     // Actual "work"
+    // Create a simple cpp client app
     SC_CPPClient app("sclang");
+    app.run();
+
+
     hello::World hello;
     hello.greet();
 
