@@ -11,7 +11,15 @@ add_definitions(-DBOOST_PROGRAM_OPTIONS_DYN_LINK) # Fix for windows and shared b
 
 set(RULE_HEADERS)
 set(RULE_SOURCES main.cpp)
-set(RULE_LINK_LIBRARIES Hello ${Boost_PROGRAM_OPTIONS_LIBRARY} ${ALSA_LIBRARIES} ${SuperCollider_LIBRARIES})
+set(RULE_LINK_LIBRARIES Hello 
+  ${Boost_PROGRAM_OPTIONS_LIBRARY} 
+  ${Boost_THREAD_LIBRARY}
+  ${Boost_SYSTEM_LIBRARY}
+  ${Boost_FILESYSTEM_LIBRARY}
+  ${Boost_REGEX_LIBRARY}
+  ${ALSA_LIBRARIES} 
+  ${SuperCollider_LIBRARIES}
+)
 
 common_application(rule)
 
